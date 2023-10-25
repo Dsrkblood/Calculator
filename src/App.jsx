@@ -1,15 +1,14 @@
+import { useState } from "react";
 import "./App.css";
-import { users } from "./data/users";
+
 function App() {
+	const [count, setCount] = useState(0);
+
 	return (
 		<div>
-			{users.map((user, index) => {
-				return (
-					<div key={index}>
-						{user.name} - {user.age}
-					</div>
-				);
-			})}
+			<p>{count}</p>
+			<button onClick={() => setCount((prevState)=> prevState-1)}>-</button>
+			<button onClick={() => setCount(count + 1)}>+</button>
 		</div>
 	);
 }

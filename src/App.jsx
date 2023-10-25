@@ -1,13 +1,16 @@
 import "./App.css";
-import { Button } from "./components/Button";
-import { AppContent } from "./components/AppContent";
-
+import { users } from "./data/users";
 function App() {
 	return (
-		<>
-			<AppContent />
-			<Button />
-		</>
+		<div>
+			{users.map((user, index) => {
+				return (
+					<div key={index}>
+						{user.name} - {user.age}
+					</div>
+				);
+			})}
+		</div>
 	);
 }
 

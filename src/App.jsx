@@ -1,14 +1,10 @@
-import { useState } from "react";
 import "./App.css";
+import { TasksList } from "./components/TasksList";
 
 function App() {
-	const [count, setCount] = useState(0);
-
 	return (
 		<div>
-			<p>{count}</p>
-			<button onClick={() => setCount((prevState)=> prevState-1)}>-</button>
-			<button onClick={() => setCount(count + 1)}>+</button>
+			<TasksList />
 		</div>
 	);
 }

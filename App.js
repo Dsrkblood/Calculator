@@ -1,25 +1,34 @@
-const header = <h1 className='title'>Witaj na stronie!</h1>;
+class App extends React.Component {
+	// constructor(props) {
+	// 	super(props);
+	// 	this.state = {
+	// 		text: "",
+	// 	};
+	// 	this.handleClick = this.handleClick.bind(this)
+	// }
+	state = {
+		text: "",
+	};
+	handleClick() {
+		// this.state.text += "a";
+		// console.log(this.state.text);
+		const letter = "a";
+		// this.setState({
+		// 	text: this.state.text + letter,
+		// });
+		this.setState(() => ({
+			text: this.state.text + letter,
+		}));
+	}
 
-const classBig = 'big'
+	render() {
+		return (
+			<>
+				<button onClick={this.handleClick.bind(this)}>Dodaj "A"</button>
+				<h1>{this.state.text}</h1>
+			</>
+		);
+	}
+}
 
-const handleClick = () => alert('klik')
-const main = (
-	<div>
-		<h1 onClick={handleClick}className='red'>Pierwszy artykuł</h1>
-		<p>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi dicta
-			obcaecati sit ut cupiditate veritatis possimus qui. Architecto, beatae
-			illo! Cum aperiam praesentium repellendus facere eligendi architecto
-			assumenda totam quos!
-		</p>
-	</div>
-);
-const footer = (
-	<footer>
-		<p className={classBig}>Stopka</p>
-	</footer>
-);
-
-const app = [header, main, footer];
-
-ReactDOM.render(app, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));

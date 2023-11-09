@@ -1,31 +1,31 @@
 class App extends React.Component {
-	state = {
-		text: "",
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			messageIsActive: false,
+		};
+		this.handleMessageButton = this.handleMessageButton.bind(this);
+	}
 
-	handleClick = () => {
-		const number = Math.floor(Math.random() * 10);
+	handleMessageButton() {
 		this.setState({
-			text: this.state.text + number,
+			messageIsActive: !this.state.messageIsActive,
 		});
-	};
+	}
 
 	render() {
-		const btnName = "stwórz liczbę";
+		console.log(this.state.messageIsActive);
+		const text =
+			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt rerum voluptatem, eum odit facere eveniet. Exercitationem velit molestiae excepturi veritatis nemo est? Possimus adipisci ipsam assumenda, praesentium voluptate inventore.";
 		return (
 			<>
-				<button onClick={this.handleClick}>{this.props.btnTitle}</button>
-				<PanelResult text={this.state.text} />
+				<button onClick={this.handleMessageButton}>
+					{this.state.messageIsActive ? "Hide" : "Show"}
+				</button>
+				<p>{this.state.messageIsActive && text}</p>
 			</>
 		);
 	}
 }
 
-const PanelResult = props => {
-	return <h1>{props.text}</h1>;
-};
-
-ReactDOM.render(
-	<App btnTitle='Dodaj cyfrę' />,
-	document.getElementById("root")
-);
+ReactDOM.render(<App />, document.getElementById("root"));

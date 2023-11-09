@@ -8,13 +8,14 @@ class App extends React.Component {
 	}
 
 	handleMessageButton() {
-		this.setState({
-			messageIsActive: !this.state.messageIsActive,
-		});
+		// debugger
+		this.setState(prevState => ({
+			messageIsActive: !prevState.messageIsActive,
+		}));
 	}
 
 	render() {
-		console.log(this.state.messageIsActive);
+		// console.log(this.state.messageIsActive);
 		const text =
 			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt rerum voluptatem, eum odit facere eveniet. Exercitationem velit molestiae excepturi veritatis nemo est? Possimus adipisci ipsam assumenda, praesentium voluptate inventore.";
 		return (
@@ -22,7 +23,9 @@ class App extends React.Component {
 				<button onClick={this.handleMessageButton}>
 					{this.state.messageIsActive ? "Hide" : "Show"}
 				</button>
-				<p>{this.state.messageIsActive && text}</p>
+				{this.state.messageIsActive && <p>{text}</p>}
+				{/* {this.state.messageIsActive ? <p>{text}</p>: null} */}
+				{/* <p>{this.state.messageIsActive && text}</p> */}
 			</>
 		);
 	}

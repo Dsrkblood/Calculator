@@ -120,79 +120,130 @@
 
 // ReactDOM.render(<Counter result={0} />, document.getElementById("root"));
 
-const ValidationMessage = props => {
-	const { text } = props;
-	return <p>{text}</p>;
-};
+// const ValidationMessage = props => {
+// 	const { text } = props;
+// 	return <p>{text}</p>;
+// };
 
-const OrderForm = props => {
-	const {submit,change,checked} = props
-	return (
-		<form onSubmit={submit}>
-			<input
-				type='checkbox'
-				id='age'
-				onChange={change}
-				checked={checked}
-			/>
-			<label htmlFor='age'>Mam co najmniej 16 lat</label>
-			<br />
-			<button type='submit'>Kup bilet</button>
-		</form>
-	);
-};
+// const OrderForm = props => {
+// 	const {submit,change,checked} = props
+// 	return (
+// 		<form onSubmit={submit}>
+// 			<input
+// 				type='checkbox'
+// 				id='age'
+// 				onChange={change}
+// 				checked={checked}
+// 			/>
+// 			<label htmlFor='age'>Mam co najmniej 16 lat</label>
+// 			<br />
+// 			<button type='submit'>Kup bilet</button>
+// 		</form>
+// 	);
+// };
 
-class TicketShop extends React.Component {
+// class TicketShop extends React.Component {
+// 	state = {
+// 		isConfirmed: false,
+// 		isFormSubmitted: false,
+// 	};
+
+// 	handleCheckboxChange = () => {
+// 		this.setState({
+// 			isConfirmed: !this.state.isConfirmed,
+// 			isFormSubmitted: false,
+// 		});
+// 	};
+
+// 	handleFormSubmit = e => {
+// 		e.preventDefault();
+// 		if (!this.state.isFormSubmitted) {
+// 			this.setState({
+// 				isFormSubmitted: true,
+// 			});
+// 		}
+// 	};
+
+// 	displayMessage = () => {
+// 		if (this.state.isFormSubmitted) {
+// 			if (this.state.isConfirmed) {
+// 				return <ValidationMessage text='Możesz obejrzeć film. Zapraszamy!' />;
+// 			} else {
+// 				return (
+// 					<ValidationMessage text='Nie możesz obejrzeć tego filmu jeśli nie masz ukończonych 16 lat' />
+// 				);
+// 			}
+// 		} else {
+// 			return null;
+// 		}
+// 	};
+
+// 	render() {
+// 		const { isConfirmed } = this.state;
+
+// 		return (
+// 			<>
+// 				<h1>Kup bilet na horror roku!</h1>
+// 				<OrderForm
+// 					change={this.handleCheckboxChange}
+// 					submit={this.handleFormSubmit}
+// 					checked={isConfirmed}
+// 				/>
+// 				{this.displayMessage()}
+// 			</>
+// 		);
+// 	}
+// }
+
+// ReactDOM.render(<TicketShop />, document.getElementById("root"));
+
+class App extends React.Component {
 	state = {
-		isConfirmed: false,
-		isFormSubmitted: false,
+		availableProducts: 9,
+		shoppingCart: 1,
 	};
 
-	handleCheckboxChange = () => {
+	handleRemoveFromCart = () => {
 		this.setState({
-			isConfirmed: !this.state.isConfirmed,
-			isFormSubmitted: false,
+			shoppingCart: this.state.shoppingCart - 1,
 		});
 	};
 
-	handleFormSubmit = e => {
-		e.preventDefault();
-		if (!this.state.isFormSubmitted) {
-			this.setState({
-				isFormSubmitted: true,
-			});
-		}
+	handleAddToCart = () => {
+		this.setState({
+			shoppingCart: this.state.shoppingCart + 1,
+		});
 	};
 
-	displayMessage = () => {
-		if (this.state.isFormSubmitted) {
-			if (this.state.isConfirmed) {
-				return <ValidationMessage text='Możesz obejrzeć film. Zapraszamy!' />;
-			} else {
-				return (
-					<ValidationMessage text='Nie możesz obejrzeć tego filmu jeśli nie masz ukończonych 16 lat' />
-				);
-			}
-		} else {
-			return null;
-		}
+	handleBuy = () => {
+		this.setState({
+			availableProducts: this.state.availableProducts - this.state.shoppingCart,
+			shoppingCart: 0,
+		});
 	};
-
 	render() {
-		const { isConfirmed } = this.state;
+		const { shoppingCart, availableProducts } = this.state;
 
+		const style = shoppingCart === 0 ? { opacity: 0.3 } : {};
 		return (
-			<>
-				<h1>Kup bilet na horror roku!</h1>
-				<OrderForm
-					change={this.handleCheckboxChange}
-					submit={this.handleFormSubmit}
-					checked={isConfirmed}
-				/>
-				{this.displayMessage()}
-			</>
+			<div>
+				<button
+					onClick={this.handleRemoveFromCart}
+					disabled={shoppingCart === 0 ? true : false}>
+					-
+				</button>
+
+				<span style={style}>{shoppingCart} </span>
+
+				<button
+					disabled={shoppingCart === availableProducts ? true : false}
+					onClick={this.handleAddToCart}>
+					+
+				</button>
+				{shoppingCart > 0 && <button onClick={this.handleBuy}>Kup</button>}
+			</div>
 		);
 	}
 }
 
-ReactDOM.render(<TicketShop />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));

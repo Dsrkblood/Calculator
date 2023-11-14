@@ -197,53 +197,139 @@
 
 // ReactDOM.render(<TicketShop />, document.getElementById("root"));
 
-class App extends React.Component {
+// class App extends React.Component {
+// 	state = {
+// 		availableProducts: 9,
+// 		shoppingCart: 1,
+// 	};
+
+// 	handleRemoveFromCart = () => {
+// 		this.setState({
+// 			shoppingCart: this.state.shoppingCart - 1,
+// 		});
+// 	};
+
+// 	handleAddToCart = () => {
+// 		this.setState({
+// 			shoppingCart: this.state.shoppingCart + 1,
+// 		});
+// 	};
+
+// 	handleBuy = () => {
+// 		this.setState({
+// 			availableProducts: this.state.availableProducts - this.state.shoppingCart,
+// 			shoppingCart: 0,
+// 		});
+// 	};
+// 	render() {
+// 		const { shoppingCart, availableProducts } = this.state;
+
+// 		const style = shoppingCart === 0 ? { opacity: 0.3 } : {};
+// 		return (
+// 			<div>
+// 				<button
+// 					onClick={this.handleRemoveFromCart}
+// 					disabled={shoppingCart === 0 ? true : false}>
+// 					-
+// 				</button>
+
+// 				<span style={style}>{shoppingCart} </span>
+
+// 				<button
+// 					disabled={shoppingCart === availableProducts ? true : false}
+// 					onClick={this.handleAddToCart}>
+// 					+
+// 				</button>
+// 				{shoppingCart > 0 && <button onClick={this.handleBuy}>Kup</button>}
+// 			</div>
+// 		);
+// 	}
+// }
+
+// ReactDOM.render(<App />, document.getElementById("root"));
+
+const data = {
+	users: [
+		{
+			id: 1,
+			age: 29,
+			name: "Arek",
+			sex: "male",
+		},
+		{
+			id: 2,
+			age: 49,
+			name: "Marta",
+			sex: "female",
+		},
+		{
+			id: 3,
+			age: 19,
+			name: "Stasia",
+			sex: "female",
+		},
+		{
+			id: 4,
+			age: 24,
+			name: "Karol",
+			sex: "male",
+		},
+	],
+};
+
+const Item = ({ user }) => (
+	<div className='userInfo'>
+		<h1>{user.name}</h1>
+		<p>Informacje o użytkowniku</p>
+		<p>
+			Wiek użytkownika:<strong>{user.age}</strong>
+		</p>
+		<p>
+			Płeć użytkownika: <strong>{user.sex}</strong>
+		</p>
+	</div>
+);
+
+class ListItems extends React.Component {
 	state = {
-		availableProducts: 9,
-		shoppingCart: 1,
+		select: "all",
 	};
 
-	handleRemoveFromCart = () => {
+	handleUsersFilter = option => {
 		this.setState({
-			shoppingCart: this.state.shoppingCart - 1,
+			select: option,
 		});
 	};
 
-	handleAddToCart = () => {
-		this.setState({
-			shoppingCart: this.state.shoppingCart + 1,
-		});
-	};
-
-	handleBuy = () => {
-		this.setState({
-			availableProducts: this.state.availableProducts - this.state.shoppingCart,
-			shoppingCart: 0,
-		});
+	usersList = () => {
+		let users = this.props.data.users;
+		switch (this.state.select) {
+			case "all":
+				return users.map(user => <Item user={user} key={user.id} />);
+			case "female":
+				users = users.filter(user => user.sex === "female");
+				return users.map(user => <Item user={user} key={user.id} />);
+			case "male":
+				users = users.filter(user => user.sex === "male");
+				return users.map(user => <Item user={user} key={user.id} />);
+			default:
+				return "Brak danych"
+		}
 	};
 	render() {
-		const { shoppingCart, availableProducts } = this.state;
-
-		const style = shoppingCart === 0 ? { opacity: 0.3 } : {};
 		return (
 			<div>
-				<button
-					onClick={this.handleRemoveFromCart}
-					disabled={shoppingCart === 0 ? true : false}>
-					-
+				<button onClick={() => this.handleUsersFilter("all")}>Wszyscy</button>
+				<button onClick={() => this.handleUsersFilter("female")}>
+					Kobiety
 				</button>
-
-				<span style={style}>{shoppingCart} </span>
-
-				<button
-					disabled={shoppingCart === availableProducts ? true : false}
-					onClick={this.handleAddToCart}>
-					+
+				<button onClick={() => this.handleUsersFilter("male")}>
+					Mężczyźni
 				</button>
-				{shoppingCart > 0 && <button onClick={this.handleBuy}>Kup</button>}
+				{this.usersList()}
 			</div>
 		);
 	}
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<ListItems data={data} />, document.getElementById("root"));

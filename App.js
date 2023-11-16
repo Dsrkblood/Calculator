@@ -1,74 +1,64 @@
-class Form extends React.Component {
+const Cash = props => (
+	<div>
+		{props.title}
+		{props.cash <= 0 ? "" : (props.cash / props.ratio).toFixed(2)}
+	</div>
+);
+
+class ExchangeCounter extends React.Component {
 	state = {
-		city: "London",
-		text: "London is a rainy city.",
-		isLoved: true,
-		number: "0",
+		amount: "",
 	};
 
+	currencies = [
+		{
+			id: 1,
+			name: "dollar",
+			ratio: 4.02,
+			title: "Wartość w dolarach: ",
+		},
+		{
+			id: 2,
+			name: "euro",
+			ratio: 4.38,
+			title: "Wartość w euro: ",
+		},
+		{
+			id: 3,
+			name: "pound",
+			ratio: 5.02,
+			title: "Wartość w funtach: ",
+		},
+	];
 	handleChange = e => {
-		// console.log(e.target.name);
-		if (e.target.type === "checkbox") {
-			this.setState({
-				[e.target.name]: e.target.checked,
-			});
-		} else {
-			this.setState({
-				[e.target.name]: e.target.value,
-			});
-		}
+		this.setState({
+			amount: e.target.value,
+		});
 	};
+
 	render() {
-		console.log(this.state.city);
-		console.log(this.state.text);
-		console.log(this.state.isLoved);
-		console.log(this.state.number);
+		const { amount } = this.state;
+		const calculators = this.currencies.map(currency => (
+			<Cash
+				key={currency.id}
+				ratio={currency.ratio}
+				title={currency.title}
+				cash={amount}
+			/>
+		));
 		return (
-			<>
+			<div className='app'>
 				<label>
-					Enter city
 					<input
-						name='city'
-						value={this.state.city}
-						onChange={this.handleChange}
-						type='text'
-					/>
-				</label>
-				<br />
-				<label>
-					Write something about this city:
-					<textarea
-						name='text'
-						value={this.state.text}
-						onChange={this.handleChange}></textarea>
-				</label>
-				<br />
-				<label>
-					Do you like this city?
-					<input
-						name='isLoved'
-						type='checkbox'
-						checked={this.state.isLoved}
+						type='number'
+						value={this.state.amount}
 						onChange={this.handleChange}
 					/>
 				</label>
-				<br />
-				<label>
-					How many times have you been to this City?
-					<select
-						name='number'
-						value={this.state.number}
-						onChange={this.handleChange}>
-						<option value='0'>0</option>
-						<option value='1'>1</option>
-						<option value='2'>2</option>
-						<option value='3'>3</option>
-						<option value='more'>More</option>
-					</select>
-				</label>
-			</>
+				{calculators}
+			</div>
 		);
 	}
 }
 
-ReactDOM.render(<Form />, document.getElementById("root"));
+ReactDOM.render(<ExchangeCounter />, document.getElementById("root"));

@@ -1,60 +1,53 @@
-class Los extends React.Component {
+const Person = props => {
+	return (
+		<li>
+			<span>{props.name}</span>
+			<button onClick={props.click}>Usuń</button>
+		</li>
+	);
+};
+
+class List extends React.Component {
 	state = {
-		rand: null,
-		divination: ["pierwsza wróżba", "druga wróżba", "trzecia wróżba"],
-		value: "",
+		people: [
+			{
+				id: 1,
+				name: "Jan K.",
+			},
+			{
+				id: 2,
+				name: "Piotr K.",
+			},
+			{
+				id: 3,
+				name: "Maria W.",
+			},
+			{
+				id: 4,
+				name: "John S.",
+			},
+		],
 	};
 
-	handleRand = () => {
+	handleDelete = id => {
+		const people = [...this.state.people];
+		const index = people.findIndex(person => person.id === id);
+		people.splice(index, 1);
 		this.setState({
-			rand: Math.floor(Math.random() * this.state.divination.length),
+			people,
 		});
-	};
-
-	randomMessage() {
-		return <h1>{this.state.divination[this.state.rand]}</h1>;
-	}
-
-	handleDivination = e => {
-		this.setState({
-			value: e.target.value,
-		});
-	};
-
-	handleAddDivination = () => {
-		// let newArray = this.state.divination.map(el => el);
-		// newArray.push(value);
-		// this.setState({
-		// 	divination: newArray,
-		// 	value: "",
-		// });
-		if (this.state.value === "") return alert("wpisz coś!");
-		else {
-			const divination = [...this.state.divination];
-			divination.push(this.state.value);
-			this.setState({
-				divination,
-				value: "",
-			});
-			alert(`Wróżba dodana. Aktualne wróżby: ${divination}`);
-		}
 	};
 
 	render() {
-		return (
-			<>
-				<button onClick={this.handleRand}>Zobacz wróżbę</button>
-				<br />
-				<input
-					type='text'
-					value={this.state.value}
-					onChange={this.handleDivination}
-				/>
-				<button onClick={this.handleAddDivination}>Dodaj wróżbę</button>
-				{this.randomMessage()}
-			</>
-		);
+		const people = this.state.people.map(person => (
+			<Person
+				key={person.id}
+				name={person.name}
+				click={() => this.handleDelete(person.id)}
+			/>
+		));
+		return <ul>{people}</ul>;
 	}
 }
 
-ReactDOM.render(<Los />, document.getElementById("root"));
+ReactDOM.render(<List />, document.getElementById("root"));

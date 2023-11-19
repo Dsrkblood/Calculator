@@ -1,52 +1,53 @@
-const Person = props => {
-	return (
-		<li>
-			<span>{props.name}</span>
-			<button onClick={props.click}>Usuń</button>
-		</li>
-	);
-};
-
 class List extends React.Component {
 	state = {
-		people: [
-			{
-				id: 1,
-				name: "Jan K.",
-			},
-			{
-				id: 2,
-				name: "Piotr K.",
-			},
-			{
-				id: 3,
-				name: "Maria W.",
-			},
-			{
-				id: 4,
-				name: "John S.",
-			},
-		],
+		number1: 0,
+		number2: 0,
+		number3: 0,
 	};
 
-	handleDelete = id => {
-		const people = [...this.state.people];
-		const index = people.findIndex(person => person.id === id);
-		people.splice(index, 1);
+	handleAdd = () => {
 		this.setState({
-			people,
+			number1: this.state.number1 + 1,
+		});
+		// console.log(this.state.number1 + "  w metodzie");
+	};
+
+	handleAdd2 = () => {
+		this.setState({
+			number2: this.state.number2 + 1,
+		});
+		this.setState({
+			number2: this.state.number2 + 1,
+		});
+		this.setState({
+			number2: this.state.number2 + 1,
 		});
 	};
 
+	handleAdd3 = () => {
+		this.setState(prevState => ({
+			number3: prevState.number3 + 1,
+		}));
+		this.setState(prevState => ({
+			number3: prevState.number3 + 2,
+		}));
+		this.setState(prevState => ({
+			number3: prevState.number3 + 3,
+		}));
+	};
+
 	render() {
-		const people = this.state.people.map(person => (
-			<Person
-				key={person.id}
-				name={person.name}
-				click={() => this.handleDelete(person.id)}
-			/>
-		));
-		return <ul>{people}</ul>;
+		// console.log(this.state.number1 + " w render");
+		return (
+			<div>
+				<button onClick={this.handleAdd}>Podbij o 1</button>
+				<h1>{this.state.number1}</h1>
+				<button onClick={this.handleAdd2}>Podbij o 3</button>
+				<h1>{this.state.number2}</h1>
+				<button onClick={this.handleAdd3}>Podbij o 6</button>
+				<h1>{this.state.number3}</h1>
+			</div>
+		);
 	}
 }
 

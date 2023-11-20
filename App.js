@@ -1,50 +1,61 @@
 class List extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			number: 0
-		};
-		console.log("Wywołanie motody constructor");
-	}
+	state = {
+		status: true,
+	};
 
-	componentWillMount(){
-		console.log("componentWillMount");
+	componentDidMount() {
+		console.log(`Aplikacja zamontowana ${this.state.status}`);
 	}
-
-	componentDidMount(){
-		console.log("componentDidMount");
-		this.setState({
-			number: 1
-		})
-	}
-	componentDidUpdate(){
-		console.log("componentDidUpdate");
+	componentDidUpdate() {
+		console.log(`Aplikacja aktualizowana ${this.state.status}`);
 	}
 
 	render() {
-		console.log("Wywoładan metoda render()");
-		
+		console.log(`renderowanie głównej aplikacji`);
 		return (
 			<>
-				<p>lifecycle-montowanie komponentu</p>
-				<Child />
+				<button
+					onClick={() =>
+						this.setState({
+							status: !this.state.status,
+						})
+					}>
+					Przełącz
+				</button>
+				<Child1 status={this.state.status} />
+				{this.state.status && <Child2 />}
 			</>
 		);
 	}
 }
 
-class Child extends React.Component{
-	componentDidMount(){
-		console.log("componentDidMount w Child");
-		// this.setState({
-		// 	number: 1
-		// })
+class Child1 extends React.Component {
+	// componentDidMount() {
+	// 	console.log(`Child1 zamontowany`);
+	// }
+	// componentDidUpdate() {
+	// 	console.log(`Child1 aktualizowana `);
+	// }
+	
+	render() {
+		console.log(`renderowanie child1`);
+		return <>{this.props.status ? "true" : "false"}</>;
 	}
-	render(){
-		console.log("wywołanie render na Child");
-		return(
-			<h1>dziecko</h1>
-		)
+}
+
+class Child2 extends React.Component {
+	componentDidMount() {
+		console.log(`Child2 zamontowany`);
+	}
+	componentDidUpdate() {
+		console.log(`Child2 aktualizowana `);
+	}
+	componentWillUnmount(){
+		console.log(`Child2 odmontowany`);
+	}
+	render() {
+		console.log(`render CHild2`);
+		return <div>Komponent Child2 zamontowany</div>;
 	}
 }
 

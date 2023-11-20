@@ -1,53 +1,50 @@
 class List extends React.Component {
-	state = {
-		number1: 0,
-		number2: 0,
-		number3: 0,
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			number: 0
+		};
+		console.log("Wywołanie motody constructor");
+	}
 
-	handleAdd = () => {
-		this.setState({
-			number1: this.state.number1 + 1,
-		});
-		// console.log(this.state.number1 + "  w metodzie");
-	};
+	componentWillMount(){
+		console.log("componentWillMount");
+	}
 
-	handleAdd2 = () => {
+	componentDidMount(){
+		console.log("componentDidMount");
 		this.setState({
-			number2: this.state.number2 + 1,
-		});
-		this.setState({
-			number2: this.state.number2 + 1,
-		});
-		this.setState({
-			number2: this.state.number2 + 1,
-		});
-	};
-
-	handleAdd3 = () => {
-		this.setState(prevState => ({
-			number3: prevState.number3 + 1,
-		}));
-		this.setState(prevState => ({
-			number3: prevState.number3 + 2,
-		}));
-		this.setState(prevState => ({
-			number3: prevState.number3 + 3,
-		}));
-	};
+			number: 1
+		})
+	}
+	componentDidUpdate(){
+		console.log("componentDidUpdate");
+	}
 
 	render() {
-		// console.log(this.state.number1 + " w render");
+		console.log("Wywoładan metoda render()");
+		
 		return (
-			<div>
-				<button onClick={this.handleAdd}>Podbij o 1</button>
-				<h1>{this.state.number1}</h1>
-				<button onClick={this.handleAdd2}>Podbij o 3</button>
-				<h1>{this.state.number2}</h1>
-				<button onClick={this.handleAdd3}>Podbij o 6</button>
-				<h1>{this.state.number3}</h1>
-			</div>
+			<>
+				<p>lifecycle-montowanie komponentu</p>
+				<Child />
+			</>
 		);
+	}
+}
+
+class Child extends React.Component{
+	componentDidMount(){
+		console.log("componentDidMount w Child");
+		// this.setState({
+		// 	number: 1
+		// })
+	}
+	render(){
+		console.log("wywołanie render na Child");
+		return(
+			<h1>dziecko</h1>
+		)
 	}
 }
 

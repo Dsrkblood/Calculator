@@ -1,62 +1,68 @@
-class List extends React.Component {
+class App extends React.Component {
 	state = {
-		status: true,
+		active: true,
 	};
 
-	componentDidMount() {
-		console.log(`Aplikacja zamontowana ${this.state.status}`);
+	handleClick = () => {
+		this.setState(prevState => ({
+			active: !prevState.active,
+		}));
+	};
+
+	render() {
+		return (
+			<div>
+				<SwitchButton active={this.state.active} click={this.handleClick} />
+				<br />
+				{this.state.active === true && <Clock />}
+			</div>
+		);
 	}
-	componentDidUpdate() {
-		console.log(`Aplikacja aktualizowana ${this.state.status}`);
+}
+
+const SwitchButton = props => (
+	<button onClick={props.click}>{props.active ? "Wyłącz" : "Włącz"}</button>
+);
+
+class Clock extends React.Component {
+	interval = "";
+
+	state = {
+		time: this.getTime(),
+	};
+
+	getTime() {
+		const currentTime = new Date();
+		return {
+			hours: currentTime.getHours(),
+			minutes: currentTime.getMinutes(),
+			seconds: currentTime.getSeconds(),
+		};
+	}
+	setTime = () => {
+		const time = this.getTime();
+		this.setState({ time });
+	};
+	componentDidMount() {
+		console.log("zegarek zamontowany");
+		this.interval = setInterval(this.setTime, 1000);
+	}
+
+	componentWillUnmount() {
+		console.log("zegarek usunięty");
+		clearInterval(this.interval);
 	}
 
 	render() {
-		console.log(`renderowanie głównej aplikacji`);
+		this.getTime();
+		const { hours, minutes, seconds } = this.state.time;
 		return (
 			<>
-				<button
-					onClick={() =>
-						this.setState({
-							status: !this.state.status,
-						})
-					}>
-					Przełącz
-				</button>
-				<Child1 status={this.state.status} />
-				{this.state.status && <Child2 />}
+				{hours} : {minutes > 9 ? minutes : `0${minutes}`} :{" "}
+				{seconds > 9 ? seconds : `0${seconds}`}
 			</>
 		);
 	}
 }
 
-class Child1 extends React.Component {
-	// componentDidMount() {
-	// 	console.log(`Child1 zamontowany`);
-	// }
-	// componentDidUpdate() {
-	// 	console.log(`Child1 aktualizowana `);
-	// }
-	
-	render() {
-		console.log(`renderowanie child1`);
-		return <>{this.props.status ? "true" : "false"}</>;
-	}
-}
-
-class Child2 extends React.Component {
-	componentDidMount() {
-		console.log(`Child2 zamontowany`);
-	}
-	componentDidUpdate() {
-		console.log(`Child2 aktualizowana `);
-	}
-	componentWillUnmount(){
-		console.log(`Child2 odmontowany`);
-	}
-	render() {
-		console.log(`render CHild2`);
-		return <div>Komponent Child2 zamontowany</div>;
-	}
-}
-
-ReactDOM.render(<List />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));

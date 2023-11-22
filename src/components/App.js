@@ -1,53 +1,61 @@
 import React, { Component } from "react";
 import "./App.css";
-import SwitchButton from "./SwitchButton";
+// Rosnąca baza danych
+const data = [
+	{
+		id: 1,
+		title: "Wiadomość numer 1",
+		body: "Zawartość wiadomości numer 1 ...",
+	},
+	{
+		id: 2,
+		title: "Wiadomość numer 2",
+		body: "Zawartość wiadomości numer 2 ...",
+	},
+];
+// Dodawanie danych do tablicy co 4s
+setInterval(() => {
+	const index = data.length + 1;
+	data.push({
+		id: index,
+		title: `Wiadomośc numer ${index}`,
+		body: `Zawartość wiadomości numer ${index} ...`,
+	});
+}, 4000);
 
 class App extends Component {
 	state = {
-		time: 0,
-		active: false,
+		comments: [...data],
 	};
 
-	handleClick = () => {
-		if (this.state.active) {
-			clearInterval(this.idInterval);
+	getData = () => {
+		if (this.state.comments.length !== data.length) {
+			this.setState({
+				comments: [...data],
+			});
 		} else {
-			this.idInterval = setInterval(() => this.addSecond(), 1000);
+			console.log("dane tekie same");
 		}
-
-		this.setState({
-			active: !this.state.active,
-		});
 	};
 
-	addSecond = () => {
-		this.setState(prevState => ({
-			time: prevState.time + 1,
-		}));
-	};
+	componentDidMount() {
+		this.idI = setInterval(this.getData, 1000);
+	}
 
-	handleReset = () => {
-		clearInterval(this.idInterval);
-		this.setState({
-			active: false,
-			time: 0,
-		});
-	};
+	componentWillUnmount() {
+		clearInterval(this.idI);
+	}
 
 	render() {
-		return (
-			<div>
-				<SwitchButton
-					click={this.handleClick}
-					reset={this.handleReset}
-					active={this.state.active}
-				/>
-				<p>{this.state.time}s</p>
+		const comments = this.state.comments.map(comment => (
+			<div key={comment.id}>
+				<h4>{comment.title}</h4>
+				<h5>{comment.body}</h5>
 			</div>
-		);
+		));
+
+		return <div className='App'>{comments.reverse()}</div>;
 	}
 }
 
 export default App;
-
-

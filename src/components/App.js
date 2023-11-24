@@ -3,11 +3,11 @@ import "./App.css";
 import UsersList from "./UsersList";
 import ButtonFetchUsers from "./ButtonFetchUsers";
 
-const API = "https://randomuser.me/api/?results=5";
+const API = "https://randomuser.me/api/?results=1";
 
 class App extends Component {
 	state = {
-		users: null,
+		users: [],
 	};
 
 	handleDataFetch = () => {
@@ -20,9 +20,10 @@ class App extends Component {
 			})
 			.then(response => response.json())
 			.then(data => {
-				this.setState({
-					users: data.results,
-				});
+				const user = data.results;
+				this.setState(prevState => ({
+					users: prevState.users.concat(user),
+				}));
 			})
 			.catch(error => console.log(error));
 	};
@@ -31,7 +32,7 @@ class App extends Component {
 		return (
 			<div>
 				<ButtonFetchUsers click={this.handleDataFetch} />
-				{users ? <UsersList users={users} /> : users}
+				<div>{users.length > 0 ? <UsersList users={users} /> : users}</div>
 			</div>
 		);
 	}

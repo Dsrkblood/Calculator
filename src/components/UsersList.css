@@ -1,0 +1,15 @@
+button{
+    padding: 10px 20px;
+    margin: 10px;
+    border: 2px solid black;
+    background-color: white;
+    cursor: pointer;
+}
+.users {
+	text-align: center;
+}
+.users li {
+	padding: 10px;
+	border-top: 2px solid black;
+	list-style: none;
+}

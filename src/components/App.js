@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import UsersList from "./UsersList";
-import ButtonFetchUsers from "./ButtonFetchUsers";
+// import ButtonFetchUsers from "./ButtonFetchUsers";
 
 const API = "https://randomuser.me/api/?results=1";
 
@@ -27,11 +27,17 @@ class App extends Component {
 			})
 			.catch(error => console.log(error));
 	};
+
+	buttonFetchUsers = () => {
+		return <button onClick={this.handleDataFetch}>Dodaj użytkownika</button>;
+	};
+
 	render() {
 		const users = this.state.users;
 		return (
 			<div>
-				<ButtonFetchUsers click={this.handleDataFetch} />
+				{this.buttonFetchUsers()}
+				{/* <ButtonFetchUsers click={this.handleDataFetch} /> */}
 				<div>{users.length > 0 ? <UsersList users={users} /> : users}</div>
 			</div>
 		);

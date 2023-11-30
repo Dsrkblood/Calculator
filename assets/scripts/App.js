@@ -1,7 +1,6 @@
-function combine(a, b, c) {
-	const calculate = (a * b) / c;
-	return calculate;
-}
+const numberArray = [1, 2, 3];
+function transformToObjects(numberArray) {
+	const objectArray = numberArray.map(item => ({ val: item }));
 
-combine(2, 4, 2);
- 
+	return objectArray;
+}

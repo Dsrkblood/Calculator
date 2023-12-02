@@ -13,8 +13,11 @@ function App() {
 				<CoreConcepts />
 				<Excamples/>
 			</main>
+			
 		</>
 	);
+
+	
 }
 
 export default App;

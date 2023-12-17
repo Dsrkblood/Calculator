@@ -17,3 +17,11 @@ https://tictactie-react.netlify.app/
 - The game allows you to insert an X or an O in the desired place on the board.
 - Dynamic information about players' moves is displayed below the board.
 - When any player wins the game it is displayed which player won.
+
+## 💰Investment Calculator💲
+
+#### Application for calculating return on investment
+https://investmentcalculatorreactvite.netlify.app/
+- The application allows you to calculate the profit for a given year on your investment, given your initial capital, annual investment, interest rate and investment duration.
+- Practice the skills learned from usingState.
+- Knowledge retention

@@ -1,4 +1,6 @@
 # LearningReact
+- This is a repository that contains all the pages I made during the React course.
+- Each page allowed me to learn something new and consolidate the acquired vision.
 
 ## 👷🏻‍♂️DemoReact🏗️
 

@@ -1,6 +1,16 @@
 import { useState } from "react";
 export default function Player() {
-	
+	const [enteredPlayerName, setEnteredPlayerName] = useState("");
+	const [submitted, setSubmitter] = useState(false);
+
+	function handleChange(event) {
+		setSubmitter(false);
+		setEnteredPlayerName(event.target.value);
+	}
+
+	function handleClick() {
+		setSubmitter(true);
+	}
 
 	return (
 		<section id='player'>

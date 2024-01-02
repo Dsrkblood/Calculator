@@ -43,3 +43,14 @@ https://investmentcalculatorreactvite.netlify.app/
 - Conditional linear styles
 - Using the styled-components library
 - Tailwind CSS
+
+## RefAndPortals🌀
+
+#### The site at which I learned to use Ref and Portals
+
+https://refandportals.netlify.app/
+
+- learned about React Hook useRef and how to use it and what it is made for
+- I learned about forwardRef which is used to use ref in subordinate components
+- useImperativeHandle that lets you customize the handle exposed as a ref
+- createPortal which is used to place content in other page elements instead of the div .root (e.g. body, .modal)

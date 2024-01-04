@@ -54,3 +54,14 @@ https://refandportals.netlify.app/
 - I learned about forwardRef which is used to use ref in subordinate components
 - useImperativeHandle that lets you customize the handle exposed as a ref
 - createPortal which is used to place content in other page elements instead of the div .root (e.g. body, .modal)
+
+## 📝React Project Menager📋✔️
+
+#### Site created to save projects and assign tasks to them
+
+https://reactprojectmenager.netlify.app/
+
+- The site allows you to store the created projects in the "projects" objects table.
+- Projects can be accessed through the side panel, Projects are displayed by retrieving their unique Id.
+- Each project can be assigned its own tasks which are stored in the "Tasks" objects array.
+- Tasks are displayed through the Tasks.jsx component which retrieves all tasks and then filters them by matching project id. (🛠️Fixed bug that was present in a task from Udemy course)

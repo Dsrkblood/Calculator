@@ -18,17 +18,14 @@ export default function NewTask({ onAdd }) {
 		setEnteredTask("");
 	}
 
-    
-    }
-
 	return (
 		<div className='flex items-center gap-4'>
 			<Modal ref={modal} buttonCaption='Close'>
-				<h2 className='text-xl font-bold text-stone-700 my-4'>Invalid Input</h2>
-				<p className='text-stone-600 mb-4'>
+				<h2 className='text-xl font-bold text-stone-800 my-4'>Invalid Input</h2>
+				<p className='text-stone-700 mb-4'>
 					Ooops... you can't add an empty task
 				</p>
-				<p className='text-stone-600 mb-4'>
+				<p className='text-stone-700 mb-4'>
 					{" "}
 					Please enter the task in the input field.
 				</p>

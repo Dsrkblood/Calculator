@@ -65,3 +65,12 @@ https://reactprojectmenager.netlify.app/
 - Projects can be accessed through the side panel, Projects are displayed by retrieving their unique Id.
 - Each project can be assigned its own tasks which are stored in the "Tasks" objects array.
 - Tasks are displayed through the Tasks.jsx component which retrieves all tasks and then filters them by matching project id. (🛠️Fixed bug that was present in a task from Udemy course)
+
+## ElegantContext
+
+#### A site that allows you to practice the knowledge you've gained, as well as new solutions and Hooks
+
+- getting rid of props drilling
+- createContext Hook
+- useReducer Hook
+- useReducer instead of useState

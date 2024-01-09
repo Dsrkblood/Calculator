@@ -3,7 +3,8 @@ import { ProjectContext } from "../store/project-context";
 import { useContext } from "react";
 
 export default function SelectedProject() {
-	const { onDelete } = useContext(ProjectContext);
+	const { onDelete, project } = useContext(ProjectContext);
+
 	const formattedDate = new Date(project.dueDate).toLocaleDateString("pl-PL", {
 		year: "numeric",
 		month: "short",
@@ -28,12 +29,7 @@ export default function SelectedProject() {
 					{project.description}
 				</p>
 			</header>
-			<Tasks
-				onAdd={onAddTask}
-				onDelete={onDeleteTask}
-				tasks={tasks}
-				project={project}
-			/>
+			<Tasks />
 		</div>
 	);
 }

@@ -4,13 +4,15 @@ import NewProject from "../components/NewProject";
 import NoProjectSelected from "../components/NoProjectSelected";
 
 export const ProjectContext = createContext({
-	selectedProjectId: undefined,
-	projects: [],
-	tasks: [],
-	projject: {},
+	project: "",
+	allProjects: "",
 	onStartAddProject: () => {},
 	onSelectProject: () => {},
-	selectedProjectId: () => {},
+	onDelete: () => {},
+	onAddTask: () => {},
+	onDeleteTask: () => {},
+	onAddProject: () => {},
+	onCancelProject: () => {},
 });
 
 export default function ProjectContextProvider({ children }) {
@@ -102,35 +104,24 @@ export default function ProjectContextProvider({ children }) {
 		project => project.id === projectsState.selectedProjectId
 	);
 
-	let content = (
-		<SelectedProject
-			project={selectedProject}
-			onDelete={handleDeleteProject}
-			onAddTask={handleAddTask}
-			onDeleteTask={handleDeleteTask}
-			tasks={projectsState.tasks}
-		/>
-	);
+	let content = <SelectedProject />;
 
 	if (projectsState.selectedProjectId === null) {
-		content = (
-			<NewProject onAdd={handleAddProject} onCancel={handleCancelAddProject} />
-		);
+		content = <NewProject />;
 	} else if (projectsState.selectedProjectId === undefined) {
 		content = <NoProjectSelected onStartAddProject={handleStartAddProject} />;
 	}
 
 	const ctxValue = {
-		// selectedProjectId: undefined,
-		// projects: [],
-		// tasks: [],
+		project: selectedProject,
 		allProjects: projectsState,
 		onStartAddProject: handleStartAddProject,
 		onSelectProject: handleSelectProject,
-		selectedProjectId: projectsState.selectedProjectId,
 		onDelete: handleDeleteProject,
 		onAddTask: handleAddTask,
 		onDeleteTask: handleDeleteTask,
+		onAddProject: handleAddProject,
+		onCancelProject: handleCancelAddProject,
 	};
 
 	return (

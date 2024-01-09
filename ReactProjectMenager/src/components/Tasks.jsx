@@ -1,7 +1,13 @@
 import NewTask from "./NewTask";
+import { ProjectContext } from "../store/project-context";
+import { useContext } from "react";
 
-export default function Task({ tasks, project, onAdd, onDelete }) {
-	let actualTasks = tasks.filter(task => task.projectId === project.id);
+export default function Task() {
+	const { allProjects, onDelete, onAdd } = useContext(ProjectContext);
+	const tasks = allProjects.tasks;
+	let actualTasks = tasks.filter(
+		task => task.projectId === allProjects.project.id
+	);
 
 	return (
 		<section>

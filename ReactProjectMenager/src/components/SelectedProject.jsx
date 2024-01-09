@@ -1,12 +1,9 @@
 import Tasks from "./Tasks";
+import { ProjectContext } from "../store/project-context";
+import { useContext } from "react";
 
-export default function SelectedProject({
-	project,
-	onDelete,
-	onAddTask,
-	onDeleteTask,
-	tasks
-}) {
+export default function SelectedProject() {
+	const { onDelete } = useContext(ProjectContext);
 	const formattedDate = new Date(project.dueDate).toLocaleDateString("pl-PL", {
 		year: "numeric",
 		month: "short",

@@ -109,7 +109,7 @@ export default function ProjectContextProvider({ children }) {
 	if (projectsState.selectedProjectId === null) {
 		content = <NewProject />;
 	} else if (projectsState.selectedProjectId === undefined) {
-		content = <NoProjectSelected onStartAddProject={handleStartAddProject} />;
+		content = <NoProjectSelected />;
 	}
 
 	const ctxValue = {

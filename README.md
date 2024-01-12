@@ -64,9 +64,10 @@ https://reactprojectmenager.netlify.app/
 - The site allows you to store the created projects in the "projects" objects table.
 - Projects can be accessed through the side panel, Projects are displayed by retrieving their unique Id.
 - Each project can be assigned its own tasks which are stored in the "Tasks" objects array.
-- Tasks are displayed through the Tasks.jsx component which retrieves all tasks and then filters them by matching project id. (🛠️Fixed bug that was present in a task from Udemy course)
+- Tasks are displayed through the Tasks.jsx component which retrieves all tasks and then filters them by matching project id. (🛠️Fixed bug that was present in a task from Udemy course).
 - Using useContext instead of passing props.
-- Removing the problem of prosp drilling
+- Removing the problem of prosp drilling.
+- Adding a feature to autosave projects and tasks in the browser using 💾localStorage in case the connection to the page is 🔌lost or the page is reloaded🔄.
 
 ## ⚜️ElegantContext⚜️
 

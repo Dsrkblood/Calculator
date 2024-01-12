@@ -15,11 +15,14 @@ export const ProjectContext = createContext({
 	onCancelProject: () => {},
 });
 
+const storedProjects = JSON.parse(localStorage.getItem("storedProject")) || [];
+const storedTasks = JSON.parse(localStorage.getItem("storedTask")) || [];
+
 export default function ProjectContextProvider({ children }) {
 	const [projectsState, setProjectsState] = useState({
 		selectedProjectId: undefined,
-		projects: [],
-		tasks: [],
+		projects: storedProjects,
+		tasks: storedTasks,
 	});
 
 	function handleAddTask(text) {
@@ -30,6 +33,14 @@ export default function ProjectContextProvider({ children }) {
 				projectId: prevState.selectedProjectId,
 				id: taskId,
 			};
+			const storedTasks = JSON.parse(localStorage.getItem("storedTask")) || [];
+			if (storedProjects.indexOf(newTask) === -1) {
+				localStorage.setItem(
+					"storedTask",
+					JSON.stringify([newTask, ...prevState.tasks])
+				);
+			}
+
 			return {
 				...prevState,
 				tasks: [newTask, ...prevState.tasks],
@@ -39,15 +50,30 @@ export default function ProjectContextProvider({ children }) {
 
 	function handleDeleteTask(id) {
 		setProjectsState(prevState => {
+			const storedTasks = JSON.parse(localStorage.getItem("storedTask")) || [];
+			localStorage.setItem(
+				"storedTask",
+				JSON.stringify(storedTasks.filter(task => task.id !== id))
+			);
 			return {
 				...prevState,
 				tasks: prevState.tasks.filter(task => task.id !== id),
 			};
 		});
 	}
-
 	function handleDeleteProject() {
 		setProjectsState(prevState => {
+			const storedProjects =
+				JSON.parse(localStorage.getItem("storedProject")) || [];
+			localStorage.setItem(
+				"storedProject",
+				JSON.stringify(
+					storedProjects.filter(
+						project => project.id !== prevState.selectedProjectId
+					)
+				)
+			);
+
 			return {
 				...prevState,
 				selectedProjectId: undefined,
@@ -92,6 +118,16 @@ export default function ProjectContextProvider({ children }) {
 				...projectData,
 				id: projectId,
 			};
+
+			const storedProjects =
+				JSON.parse(localStorage.getItem("selectedProject")) || [];
+			if (storedProjects.indexOf(newProject.id) === -1) {
+				localStorage.setItem(
+					"storedProject",
+					JSON.stringify([...prevState.projects, newProject])
+				);
+			}
+
 			return {
 				...prevState,
 				selectedProjectId: undefined,

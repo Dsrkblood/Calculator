@@ -66,7 +66,7 @@ function App() {
 			"selectedPlaces",
 			JSON.stringify(storedIds.filter(id => id !== selectedPlace.current))
 		);
-	},[]);
+	}, []);
 
 	return (
 		<>

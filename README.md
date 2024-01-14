@@ -38,6 +38,8 @@ https://investmentcalculatorreactvite.netlify.app/
 
 #### The application at which I learned to style in React
 
+https://reactarttailwind.netlify.app/
+
 - Styles in the .css file
 - Inline styling in React
 - Conditional linear styles

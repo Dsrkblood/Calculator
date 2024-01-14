@@ -75,6 +75,8 @@ https://reactprojectmenager.netlify.app/
 
 #### A site that allows you to practice the knowledge you've gained, as well as new solutions and Hooks
 
+https://elegantcontext.netlify.app/
+
 - getting rid of props drilling
 - createContext and useContext Hook
 - useReducer Hook

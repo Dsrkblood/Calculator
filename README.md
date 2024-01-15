@@ -38,6 +38,8 @@ https://investmentcalculatorreactvite.netlify.app/
 
 #### The application at which I learned to style in React
 
+https://reactarttailwind.netlify.app/
+
 - Styles in the .css file
 - Inline styling in React
 - Conditional linear styles
@@ -72,6 +74,8 @@ https://reactprojectmenager.netlify.app/
 ## ⚜️ElegantContext⚜️
 
 #### A site that allows you to practice the knowledge you've gained, as well as new solutions and Hooks
+
+https://elegantcontext.netlify.app/
 
 - getting rid of props drilling
 - createContext and useContext Hook

@@ -81,3 +81,16 @@ https://elegantcontext.netlify.app/
 - createContext and useContext Hook
 - useReducer Hook
 - useReducer instead of useState
+  
+## 📝React QUIZ🕐
+
+#### Time limit quiz
+
+https://easyreactquiz.netlify.app/
+
+- Use of useState, useRef Hooks
+- Use of useEffect, useCallback Hooks to remove loops
+- Delving into key prop
+- Creating an optimized application
+
+

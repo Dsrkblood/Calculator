@@ -104,3 +104,6 @@ https://easyreactquiz.netlify.app/
 ## ReactClass
 
 - Learning the previous way of creating components through classes in order to understand them in case of older projects
+- Getting to know componentDidMount, componentDidUpdate and componentWillUnmount
+- Getting to know Error Boundaries which can be used only in classes
+- componentDidCatch

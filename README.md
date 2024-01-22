@@ -1,4 +1,5 @@
 # LearningReact
+
 - This is a repository that contains all the pages I made during the React course.
 - Each page allowed me to learn something new and consolidate the acquired vision.
 
@@ -81,7 +82,7 @@ https://elegantcontext.netlify.app/
 - createContext and useContext Hook
 - useReducer Hook
 - useReducer instead of useState
-  
+
 ## 📝React QUIZ🕐
 
 #### Time limit quiz
@@ -93,4 +94,9 @@ https://easyreactquiz.netlify.app/
 - Delving into key prop
 - Creating an optimized application
 
+## BehindTheScenes🎬
 
+- Using "memo" to avoid rendering a component that has not changed.
+- Using "useMemo" Hook to optimize, if the value does not change, the function will not re-execute.
+- Getting to know the Million.js optimization tool
+- Using "useCallback" to increase the optimization of the page.

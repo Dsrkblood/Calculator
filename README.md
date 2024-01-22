@@ -100,3 +100,7 @@ https://easyreactquiz.netlify.app/
 - Using "useMemo" Hook to optimize, if the value does not change, the function will not re-execute.
 - Getting to know the Million.js optimization tool
 - Using "useCallback" to increase the optimization of the page.
+
+## ReactClass
+
+- Learning the previous way of creating components through classes in order to understand them in case of older projects

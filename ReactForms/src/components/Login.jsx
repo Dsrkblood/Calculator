@@ -18,7 +18,7 @@ export default function Login() {
 		setEnteredValues(prevValues => ({
 			...prevValues,
 			[identifier]: {
-				...prevValies[identifier],
+				...prevValues[identifier],
 				value: event.target.value,
 				didEdit: false,
 			},

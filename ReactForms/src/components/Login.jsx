@@ -2,20 +2,42 @@ import { useState } from "react";
 
 export default function Login() {
 	const [enteredValues, setEnteredValues] = useState({
-		email: "",
-		password: "",
+		email: {
+			value: "",
+			didEdit: false,
+		},
+		password: {
+			value: "",
+			didEdit: false,
+		},
 	});
+	const emailIsInvalid =
+		enteredValues.email.didEdit && !enteredValues.email.value.includes("@");
 
 	function handleValueChange(event, identifier) {
-    setEnteredValues(prevValues => ({
-      ...prevValues,
-			[identifier]: event.target.value,
+		setEnteredValues(prevValues => ({
+			...prevValues,
+			[identifier]: {
+				...prevValies[identifier],
+				value: event.target.value,
+				didEdit: false,
+			},
 		}));
 	}
-  
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
+
+	function handleInputBlur(identifier) {
+		setEnteredValues(prevEdit => ({
+			...prevEdit,
+			[identifier]: {
+				...prevEdit[identifier],
+				didEdit: true,
+			},
+		}));
+	}
+
+	function handleSubmit(event) {
+		event.preventDefault();
+	}
 
 	return (
 		<form onSubmit={handleSubmit}>
@@ -28,9 +50,13 @@ export default function Login() {
 						id='email'
 						type='email'
 						name='email'
+						onBlur={() => handleInputBlur("email")}
 						onChange={event => handleValueChange(event, "email")}
-						value={enteredValues.email}
+						value={enteredValues.email.value}
 					/>
+					<div className='control-error'>
+						{emailIsInvalid && <p>Please enter a valid email address.</p>}
+					</div>
 				</div>
 
 				<div className='control no-margin'>
@@ -39,8 +65,9 @@ export default function Login() {
 						id='password'
 						type='password'
 						name='password'
+						onBlur={() => handleInputBlur("password")}
 						onChange={event => handleValueChange(event, "password")}
-						value={enteredValues.password}
+						value={enteredValues.password.value}
 					/>
 				</div>
 			</div>

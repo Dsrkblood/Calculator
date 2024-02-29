@@ -1,4 +1,4 @@
-import Cart from "./components/Cart.jsx";
+import Cart from "./components/Cart/Cart.jsx";
 import Header from "./components/Header.jsx";
 import Meals from "./components/Meals/Meals.jsx";
 import { CartContextProvider } from "./store/CartContext.jsx";

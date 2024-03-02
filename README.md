@@ -100,7 +100,14 @@ https://easyreactquiz.netlify.app/
 - Using "useMemo" Hook to optimize, if the value does not change, the function will not re-execute.
 - Getting to know the Million.js optimization tool
 - Using "useCallback" to increase the optimization of the page.
-- 
+
+## ReactClass
+
+- Learning the previous way of creating components through classes in order to understand them in case of older projects
+- Getting to know componentDidMount, componentDidUpdate and componentWillUnmount
+- Getting to know Error Boundaries which can be used only in classes
+- componentDidCatch
+
 ## FooOrder🍔
 
 - Practice the information learned in all previous chapters.
@@ -109,10 +116,3 @@ https://easyreactquiz.netlify.app/
 - Creating a universal custom hook to manage HttpRequest for retrieving data to the Meals component and sending to the Checkout component. 
 - Using two contexts to remove prop drilling, and using 'useReducer' hook.
 - Use of browser built-in functions such as Intl.NumberFormat, FormData
-
-## ReactClass
-
-- Learning the previous way of creating components through classes in order to understand them in case of older projects
-- Getting to know componentDidMount, componentDidUpdate and componentWillUnmount
-- Getting to know Error Boundaries which can be used only in classes
-- componentDidCatch

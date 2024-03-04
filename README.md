@@ -107,3 +107,12 @@ https://easyreactquiz.netlify.app/
 - Getting to know componentDidMount, componentDidUpdate and componentWillUnmount
 - Getting to know Error Boundaries which can be used only in classes
 - componentDidCatch
+
+## FooOrder🍔
+
+- Practice the information learned in all previous chapters.
+- Taking care of the readability of folders and code.
+- Using HttpRequest to send a request to the server.
+- Creating a universal custom hook to manage HttpRequest for retrieving data to the Meals component and sending to the Checkout component. 
+- Using two contexts to remove prop drilling, and using 'useReducer' hook.
+- Use of browser built-in functions such as Intl.NumberFormat, FormData

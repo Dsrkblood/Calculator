@@ -116,3 +116,9 @@ https://easyreactquiz.netlify.app/
 - Creating a universal custom hook to manage HttpRequest for retrieving data to the Meals component and sending to the Checkout component. 
 - Using two contexts to remove prop drilling, and using 'useReducer' hook.
 - Use of browser built-in functions such as Intl.NumberFormat, FormData
+
+## ReactRedux
+
+- Learning the basics of the Redux library,
+- learning about the Redux Toolkit
+- getting acquainted with new hooks: useSelector, useDispatch

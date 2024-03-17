@@ -1,11 +1,1 @@
-{
-  "events": [
-    {
-      "id": "e1",
-      "title": "A dummy event",
-      "date": "2023-02-22",
-      "image": "https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg",
-      "description": "Join this amazing event and connect with fellow developers."
-    }
-  ]
-}
+{"events":[{"title":"Test","image":"https://cdn.vegaooparty.it/media_vgp/blog_left_content_vgp/ita104/61c047ebc4c26_idee-capodanno-fluorescente.jpg","date":"2024-03-31","description":"Test","id":"6814c494-506b-49e5-a729-12446ce02650"},{"title":"New Event","image":"https://www.projektefektywny.pl/wp-content/uploads/2023/07/Fluo-Party.jpg","date":"2024-03-24","description":"Some awesome event.","id":"350eb6a6-9a1e-43a6-9bdb-8a8c8836a724"},{"id":"e1","title":"A dummy event","date":"2023-02-22","image":"https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg","description":"Join this amazing event and connect with fellow developers."}]}

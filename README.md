@@ -122,3 +122,14 @@ https://easyreactquiz.netlify.app/
 - Learning the basics of the Redux library,
 - learning about the Redux Toolkit
 - getting acquainted with new hooks: useSelector, useDispatch
+
+## React Router
+
+- Configuring routes for different paths,
+- nesting of paths,
+- error handling ,'errorElement',
+- downloading and uploading data using loaders and actions,
+- learning about useFetcher hook
+- getting to know defer for delayed requests
+
+

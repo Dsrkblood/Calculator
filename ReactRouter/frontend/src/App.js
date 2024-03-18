@@ -1,18 +1,19 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import HomePage from "./pages/Home.js";
-import EventsPage, { loader as eventsLoader } from "./pages/Events.js";
+import EditEventPage from "./pages/EditEvent";
+import ErrorPage from "./pages/Error";
 import EventDetailPage, {
 	loader as eventDetailLoader,
 	action as deleteEventAction,
-} from "./pages/EventDetail.js";
-import NewEventPage from "./pages/NewEvent.js";
-import EditEventPage from "./pages/EditEvent.js";
-import EventsRootLayout from "./pages/EventsRoot.js";
-import ErrorPage from "./pages/Error.js";
-import { action as manipulateEventAction } from "./components/EventForm.js";
+} from "./pages/EventDetail";
+import EventsPage, { loader as eventsLoader } from "./pages/Events";
+import EventsRootLayout from "./pages/EventsRoot";
+import HomePage from "./pages/Home";
+import NewEventPage from "./pages/NewEvent";
+import RootLayout from "./pages/Root";
+import { action as manipulateEventAction } from "./components/EventForm";
+import NewsletterPage, { action as newsletterAction } from "./pages/Newsletter";
 
-import RootLayout from "./pages/Root.js";
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -52,6 +53,11 @@ const router = createBrowserRouter([
 						action: manipulateEventAction,
 					},
 				],
+			},
+			{
+				path: "newsletter",
+				element: <NewsletterPage />,
+				action: newsletterAction,
 			},
 		],
 	},

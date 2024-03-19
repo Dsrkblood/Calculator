@@ -1,12 +1,32 @@
 {
-  "events": [
-    {
-      "title": "A new event",
-      "image": "https://cdn.muenchen-p.de/fl_progressive,q_65/.imaging/stk/responsive/teaser300/dms/va-2016/muenchner-christkindlmarkt/christkindlmarkt-marienplat-logo-hp/document/christkindlmarkt-marienplat-logo-hp.jpg",
-      "date": "2022-10-01",
-      "description": "Some awesome event!",
-      "id": "2a42fcc4-ea21-4bdd-abf6-c40006dc66a9"
-    }
-  ],
-  "users": []
+	"events": [
+		{
+			"title": "Work better",
+			"image": "https://deviniti.com/app/uploads/2021/10/09-20_DM-8186_EVENTS_01_MAIN-2-1024x682.png",
+			"date": "2024-03-25",
+			"description": "Text",
+			"id": "15108471-a436-41bd-acbe-32c22b35e6f0"
+		},
+		{
+			"title": "Some event",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/The_Event_2010_Intertitle.svg/800px-The_Event_2010_Intertitle.svg.png",
+			"date": "2024-03-24",
+			"description": "Some text",
+			"id": "fba4274d-1aa5-46b3-8523-107a70c07f9b"
+		},
+		{
+			"title": "Baloon party",
+			"image": "https://afterweb.pl/wp-content/uploads/event-marketing.jpg",
+			"date": "2024-03-24",
+			"description": "Some description",
+			"id": "df8c7ae9-bd99-4ac5-bd4d-dfa956a00577"
+		}
+	],
+	"users": [
+		{
+			"email": "test@test.com",
+			"password": "$2a$12$RzPYj87EQ4HGVvXrf86b1.bEAqJk.FmmkRXzPjmivCnBhKukozDyS",
+			"id": "e0545bff-04ec-49f5-a2f0-f4a64ae84003"
+		}
+	]
 }

@@ -1,4 +1,5 @@
 import { json, redirect } from "react-router-dom";
+
 import AuthForm from "../components/AuthForm";
 
 function AuthenticationPage() {
@@ -21,7 +22,7 @@ export async function action({ request }) {
 		password: data.get("password"),
 	};
 
-	const response = await fetch(`http://localhost:8080/${mode}`, {
+	const response = await fetch("http://localhost:8080/" + mode, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -42,7 +43,8 @@ export async function action({ request }) {
 
 	localStorage.setItem("token", token);
 	const expiration = new Date();
-	expiration.setHours(expiration.getHours + 1);
+	expiration.setHours(expiration.getHours() + 1);
+	localStorage.setItem("expiration", expiration.toISOString());
 
 	return redirect("/");
 }

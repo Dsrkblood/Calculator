@@ -49,7 +49,6 @@ function MainNavigation() {
 							</NavLink>
 						</li>
 					)}
-
 					{token && (
 						<li>
 							<Form action='/logout' method='post'>

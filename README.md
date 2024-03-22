@@ -132,4 +132,9 @@ https://easyreactquiz.netlify.app/
 - learning about useFetcher hook
 - getting to know defer for delayed requests
 
+## 🎢Events🎫
 
+- learning about the Tanstack Query library,
+- useMutation and useQuery hooks,
+- implementing Tanstack Query in a project to retrieve and send requests to the baccendup to receive the most up-to-date data at any time,
+- using React Router in conjunction with React Query

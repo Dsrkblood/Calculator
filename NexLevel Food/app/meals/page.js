@@ -5,7 +5,7 @@ export default function MealsPage() {
 		<>
 			<h1>Meals</h1>
 			<Link href='/meals/share'>Share</Link>
-			<Link href='/meals/post-1'>Slug</Link>
+			<Link href='/meals/post-1'>Meal Details</Link>
 		</>
 	);
 }

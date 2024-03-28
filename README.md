@@ -138,3 +138,13 @@ https://easyreactquiz.netlify.app/
 - useMutation and useQuery hooks,
 - implementing Tanstack Query in a project to retrieve and send requests to the baccendup to receive the most up-to-date data at any time,
 - using React Router in conjunction with React Query
+
+## 🆙NextLevel Food🍔
+
+- Creating a page using the fullstack freamwork Next.js.
+- Learning how to create sub-pages and proprietary file names ( page.js, layout.js, error.js etc... ).
+- Creating dynamic paths [slug].
+- Splitting components into being executed on the server and on the client.
+- Retrieving data directly from the server.
+- Learning about errors that did not occur on the development version but started to appear on the production version due to aggressive caching (revalidatePath()).
+

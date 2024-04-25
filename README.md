@@ -150,6 +150,6 @@ https://easyreactquiz.netlify.app/
 
 ## Travel
 
--Learning about good practices and paterns,
--Compound components,
--Render Props
+- Learning about good practices and paterns,
+- Compound components,
+- Render Props

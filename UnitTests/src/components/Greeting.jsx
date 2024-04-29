@@ -1,6 +1,18 @@
-export default function Greating(){
-    return <div>
-        <h2>Hello World!</h2>
-        <p>It's good to see you!</p>
-    </div>
+import { useState } from "react";
+
+export default function Greating() {
+	const [changedText, setChangedText] = useState(false);
+
+	function changeTextHandler() {
+		setChangedText(true);
+	}
+
+	return (
+		<div>
+			<h2>Hello World!</h2>
+			{!changedText && <p>It's good to see you!</p>}
+			{changedText && <p>Changed!</p>}
+			<button onClick={changeTextHandler}>Change text</button>
+		</div>
+	);
 }

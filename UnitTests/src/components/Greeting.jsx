@@ -1,3 +1,4 @@
+import Output from "./Output";
 import { useState } from "react";
 
 export default function Greating() {
@@ -10,8 +11,8 @@ export default function Greating() {
 	return (
 		<div>
 			<h2>Hello World!</h2>
-			{!changedText && <p>It's good to see you!</p>}
-			{changedText && <p>Changed!</p>}
+			{!changedText && <Output>It's good to see you!</Output>}
+			{changedText && <Output>Changed!</Output>}
 			<button onClick={changeTextHandler}>Change text</button>
 		</div>
 	);

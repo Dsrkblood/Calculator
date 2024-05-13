@@ -1,8 +1,14 @@
-export default function Todos(props: { items: string[] }) {
+import Todo from "../models/todo";
+
+export default function Todos(props:{items: Todo[]}) {
+
 	return (
 		<ul>
 			{props.items.map(item => (
-				<li key={item}>{item}</li>
+				<>
+				{console.log(item)}
+				<li key={item.id}>{item.text}</li>
+				</>
 			))}
 		</ul>
 	);

@@ -10,13 +10,14 @@ export default function Todos() {
 	return (
 		<ul className={classes.todos}>
 			{items.map(item => (
-				<>
+				
 					<TodoItem
 						key={item.id}
 						text={item.text}
 						onRemoveTodo={removeTodo.bind(null, item.id)}
 					/>
-				</>
+					
+				
 			))}
 		</ul>
 	);

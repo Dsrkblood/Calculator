@@ -13,7 +13,7 @@ export const TodosContext = createContext<TodosContextObj>({
 	removeTodo: (id: string) => {},
 });
 
-export default function TodosContextProvider(props) {
+export default function TodosContextProvider(props: { children: any }) {
 	const [todoList, setTodoList] = useState<Todo[]>([]);
 
 	function addTodoHandler(todoText: string) {

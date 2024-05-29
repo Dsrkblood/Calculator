@@ -11,14 +11,19 @@ function App() {
 		const newTodo = new Todo(todoText);
 		setTodoList(prevTodoList => {
 			return prevTodoList.concat(newTodo);
-			
+		});
+	}
+
+	function removeTodohanlder(todoId: string) {
+		setTodoList(prevTodos => {
+			return prevTodos.filter(todo => todo.id !== todoId);
 		});
 	}
 
 	return (
 		<div>
 			<NewTodo onAddTodo={addTodoHandler} />
-			<Todos items={todoList} />
+			<Todos items={todoList} onRemoveTodo={removeTodohanlder} />
 		</div>
 	);
 }

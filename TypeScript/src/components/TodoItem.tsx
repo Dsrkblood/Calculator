@@ -1,4 +1,11 @@
 import classes from "./TodoItem.module.css";
-export default function TodoItem(props: { text: string }) {
-	return <li className={classes.item}>{props.text}</li>;
+export default function TodoItem(props: {
+	text: string;
+	onRemoveTodo: () => void;
+}) {
+	return (
+		<li className={classes.item} onClick={props.onRemoveTodo}>
+			{props.text}
+		</li>
+	);
 }
